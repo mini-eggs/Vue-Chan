@@ -1,0 +1,11 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition-duration: 500ms;
+}
+
+#hamburger-container {
+  margin-bottom: -1px;
+}

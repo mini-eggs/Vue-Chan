@@ -1,0 +1,10 @@
+#x-scroll {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+#x-scroll > .spacer {
+  height: 120px;
+  width: 100%;
+}
