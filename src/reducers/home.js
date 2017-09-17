@@ -11,6 +11,14 @@ const initial: StateT = {
   boards: []
 };
 
+const formatBoard = (item: BoardT): BoardT => ({
+  ...item,
+  meta_description: item.meta_description.replace(
+    `&quot;/${item.board}/ - ${item.title}&quot; is`,
+    ""
+  )
+});
+
 function reducer(state: StateT = initial, action: ActionT) {
   const { type, payload } = action;
 
@@ -18,7 +26,7 @@ function reducer(state: StateT = initial, action: ActionT) {
     case BOARD_LIST: {
       return {
         ...state,
-        boards: payload
+        boards: payload.map(formatBoard)
       };
     }
     case BOARD_CLEAR: {

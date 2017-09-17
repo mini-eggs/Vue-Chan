@@ -16,7 +16,8 @@ const filterBoards = (boards, input) =>
   });
 
 const mapState = ({ Home: { boards }, Input: { searchInput } }) => ({
-  boards: filterBoards(boards, searchInput)
+  boards: filterBoards(boards, searchInput),
+  searchInput: searchInput
 });
 
 const mapActions = dispatch => ({

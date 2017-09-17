@@ -9,8 +9,7 @@ const props = ["board"];
 const template = `
   <md-card>
     <md-card-header>
-      <div class="md-title">/{{ board.board }}/</div>
-      <div class="md-subhead">{{ board.title }}</div>
+      <div class="md-title">/{{ board.board }}/ - {{ board.title }}</div>
     </md-card-header>
 
     <md-card-content>
@@ -19,7 +18,9 @@ const template = `
 
     <router-link :to=" '/' + board.board " tag="span">
       <md-card-actions>
-        <md-button>View</md-button>
+        <span class="pointer">
+          <md-icon>arrow_forward</md-icon>
+        </span>
       </md-card-actions>
     </router-link>
   </md-card>

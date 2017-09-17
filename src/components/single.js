@@ -52,10 +52,12 @@ const template = `
       <x-image :item="item"></x-image>
       
       <!--NAME & TIME-->
+      <!--
       <md-card-header>
         <div class="md-title">{{ item.name }}</div>
         <div class="md-subhead">{{ item.time }}</div>
       </md-card-header>
+      -->
       
       <!-- CONTENT -->
       <md-card-content>
@@ -64,12 +66,17 @@ const template = `
       
       <!--BUTTONS-->
       <md-card-actions v-if="!disableButtons" >
-        <a class="md-button no-link" @click.stop :href="replyLink" target="_blank">
-          <md-button>Reply</md-button>
+
+        <!--CHAT-->
+        <a class="md-button no-link md-no-button" @click.stop :href="replyLink" target="_blank">
+          <md-icon>chat</md-icon>
         </a>
-        <router-link v-if="view" tag="span" :to="getThreaLink(item)">
-          <md-button>View</md-button>
+
+        <!--VIEW-->
+        <router-link class="default-margin-left pointer" v-if="view" tag="span" :to="getThreaLink(item)">
+          <md-icon>arrow_forward</md-icon>
         </router-link>
+
       </md-card-actions>
     </md-card>
   </div>

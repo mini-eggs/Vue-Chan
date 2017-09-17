@@ -32,3 +32,23 @@ img {
   background-color: transparent !important;
 }
 
+.md-no-button {
+  min-width: 0 !important;
+  min-height: 0 !important;
+}
+
+.default-margin-left {
+  margin-left: 16px;
+}
+
+input {
+  font-size: 16px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hidden {
+  opacity: 0;
+}

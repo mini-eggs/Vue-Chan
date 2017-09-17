@@ -1,5 +1,6 @@
 import "./posts.css";
 import ThreadSet from "../components/threadSet";
+import Loader from "../components/loader";
 
 // pure
 
@@ -13,7 +14,8 @@ const getDataFromRoute = ({ params: { board, thread } }) => ({
 const name = "x-posts";
 
 const components = {
-  "x-thread-set": ThreadSet
+  "x-thread-set": ThreadSet,
+  "x-loader": Loader
 };
 
 const watch = {
@@ -47,10 +49,15 @@ const methods = {
 
 const template = `
   <div id="posts">
-      <div v-for="(item, index) in threads[thread]" :key="index">
-        <x-thread-set :view="false" :items="item" ></x-thread-set>
-      </div>
+
+    <!--LOADER-->
+    <x-loader v-if="( threads[thread] || [] ).length === 0" ></x-loader>
+
+    <!--LIST-->
+    <div v-for="(item, index) in threads[thread]" :key="index">
+      <x-thread-set :view="false" :items="item" ></x-thread-set>
     </div>
+
   </div>
 `;
 

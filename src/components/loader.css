@@ -1,0 +1,25 @@
+#loader {
+  text-align: center;
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+#loader span {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: XSpin;
+  transform-origin: center;
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes XSpin {
+  from {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}

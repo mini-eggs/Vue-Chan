@@ -20,7 +20,7 @@ const methods = {
 
 const template = `
   <div class="search-container">
-    <md-input-container md-inline>
+    <md-input-container md-inline md-clearable>
       <label>Search Boards...</label>
       <md-input @change="updateSearchInput" ></md-input>
     </md-input-container>

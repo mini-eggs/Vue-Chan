@@ -17,7 +17,9 @@ const template = `
   
     <!--BUTTON-->
     <div v-if="!showImage" class="button-container" :style="{ backgroundImage: 'url(' + item.thumbnail + ')' }">
-      <md-button class="md-primary md-raised" @click.stop="loadImage">Load Image</md-button>
+      <md-button class="md-primary md-raised" @click.stop="loadImage">
+        <md-icon >visibility_on</md-icon>
+      </md-button>
     </div>
 
     <!--IMAGE-->
@@ -29,7 +31,9 @@ const template = `
         Your browser does not support the video tag.
       </video>
 
-      <img v-else :src="item.image" />
+      <a v-else :href="item.image" target="_blank">
+        <img :src="item.image" />
+      </a>
 
     </div>
 

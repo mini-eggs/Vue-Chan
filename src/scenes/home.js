@@ -3,12 +3,14 @@
 import "./home.css";
 import HomeBoard from "../components/homeBoard";
 import Search from "../containers/search";
+import Loader from "../components/loader";
 
 const name = "x-home";
 
 const components = {
   "x-home-board": HomeBoard,
-  "x-search": Search
+  "x-search": Search,
+  "x-loader": Loader
 };
 
 function mounted() {
@@ -32,12 +34,20 @@ const methods = {
 
 const template = `
   <section id="home">
-    <div class="search-container">
+
+    <!--LOADER-->
+    <x-loader v-if="boards.length === 0 && !searchInput" ></x-loader>
+    
+    <!--SEARCH-->
+    <div v-if="boards.length !== 0 || searchInput"  class="search-container">
       <x-search></x-search>
     </div>
+
+    <!--ITEMS-->
     <div class="home-board-container" v-for="(item, index) in boards" :key="index">
       <x-home-board :board="item"></x-home-board>
     </div>
+
   </section>
 `;
 

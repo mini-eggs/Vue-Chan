@@ -12,6 +12,7 @@
     "flow-bin": "^0.48.0",
     "node-fetch": "^1.7.3",
     "redux": "^3.7.2",
+    "redux-offline": "^2.0.0",
     "redux-thunk": "^2.2.0",
     "request": "^2.81.0",
     "vue": "^2.4.3",

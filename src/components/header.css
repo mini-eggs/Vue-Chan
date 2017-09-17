@@ -8,10 +8,6 @@ header {
   z-index: 5;
 }
 
-#hamburger-container {
-  margin-bottom: -1px;
-}
-
 header .md-title {
   cursor: pointer;
 }
