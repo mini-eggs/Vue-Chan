@@ -3,11 +3,6 @@
   min-height: calc(100vh + 1px);
 }
 
-#-app * {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
 body,
 header > * {
   max-width: 700px;
