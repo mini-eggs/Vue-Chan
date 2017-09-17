@@ -1,9 +1,9 @@
+// @flow
+
 import "./header.css";
 import HeaderEvent from "../objects/headerEvent";
 
 // constants
-
-const HOME = 0;
 
 const headerEvent = new HeaderEvent({
   container: "header",
@@ -13,23 +13,21 @@ const headerEvent = new HeaderEvent({
 
 const scrollHandler = () => headerEvent.scrollHandler();
 
-function getRouteFromIndex(index) {
-  switch (index) {
-    case HOME:
-    default: {
-      return "/";
-    }
-  }
-}
-
 // component specific
 
 const name = "x-header";
 
 const methods = {
-  handleChange(index) {
-    const path = getRouteFromIndex(index);
-    this.$router.push({ path });
+  handleSearch() {
+    if (this.$route.path === "/") {
+      this.$bus.$emit("search");
+    } else {
+      this.$router.push({ path: "/" }, () => {
+        this.$nextTick(() => {
+          this.$bus.$emit("search");
+        });
+      });
+    }
   }
 };
 
@@ -43,25 +41,39 @@ function destroyed() {
 
 const template = `
   <header>
-
-    <!-- HAMBURGER -->
     <div id="hamburger-container" class="z-index-1 relative">
       <md-toolbar>
-        <md-button class="md-icon-button">
-          <md-icon>menu</md-icon>
+
+        <!--BRAND-->
+        <router-link 
+          tag="h2" 
+          to="/" 
+          style="flex: 1;"
+          class="md-title">
+          Vue Chan
+        </router-link>
+        
+        <!--ACTIONS-->
+        <router-link tag="span" to="/">
+          <md-button class="md-icon-button">
+            <md-icon>home</md-icon>
+          </md-button>
+        </router-link>
+
+        <md-button @click="$router.back()" class="md-icon-button">
+          <md-icon>arrow_back</md-icon>
         </md-button>
-        <h2 class="md-title">Vue Chan</h2>
+
+        <md-button @click="$bus.$emit('refresh')" class="md-icon-button">
+          <md-icon>refresh</md-icon>
+        </md-button>
+
+        <md-button @click="handleSearch" class="md-icon-button">
+          <md-icon>search</md-icon>
+        </md-button>
+
       </md-toolbar>
     </div>
-
-    <!-- TABS -->
-    <md-bottom-bar @change="handleChange" md-shift>
-      <md-bottom-bar-item md-icon="home" md-active>Home</md-bottom-bar-item>
-      <md-bottom-bar-item md-icon="music_note">Music</md-bottom-bar-item>
-      <md-bottom-bar-item md-icon="books">Books</md-bottom-bar-item>
-      <md-bottom-bar-item md-icon="photo">Pictures</md-bottom-bar-item>
-    </md-bottom-bar>
-    
   </header>
 `;
 

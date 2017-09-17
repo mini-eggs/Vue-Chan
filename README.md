@@ -11,3 +11,6 @@ DEVELOPMENT STILL IN PROGRESS.
 
 #### Production
 `$ yarn build && yarn run production`
+
+#### Type check
+`$ yarn type`

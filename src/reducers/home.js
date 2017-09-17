@@ -1,15 +1,30 @@
-import { BOARD_LIST } from "../actions/home";
+// @flow
 
-const initial = {
+import { BOARD_LIST, BOARD_CLEAR } from "../actions/home";
+import type { ActionT, BoardT } from "../types/";
+
+type StateT = {|
+  boards: Array<BoardT>
+|};
+
+const initial: StateT = {
   boards: []
 };
 
-function reducer(state = initial, { type, payload }) {
+function reducer(state: StateT = initial, action: ActionT) {
+  const { type, payload } = action;
+
   switch (type) {
     case BOARD_LIST: {
       return {
         ...state,
         boards: payload
+      };
+    }
+    case BOARD_CLEAR: {
+      return {
+        ...state,
+        boards: []
       };
     }
     default: {

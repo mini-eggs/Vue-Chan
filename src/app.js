@@ -1,3 +1,5 @@
+// @flow
+
 import * as Header from "./components/header";
 import * as Scroll from "./components/scroll";
 

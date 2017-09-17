@@ -7,18 +7,23 @@
     "react-scripts": "1.0.13"
   },
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
+    "flow-bin": "^0.48.0",
     "node-fetch": "^1.7.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request": "^2.81.0",
     "vue": "^2.4.3",
     "vue-material": "^0.7.5",
     "vue-router": "^2.7.0",
     "vue2-redux": "^1.0.1"
   },
   "scripts": {
-    "start": "node src/server & react-scripts start",
+    "start": "node src/server.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
+    "type": "flow check",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "production": "node src/server.js"

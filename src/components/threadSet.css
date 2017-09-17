@@ -1,0 +1,8 @@
+#thread-set > div {
+  border: 0 #3f51b5 solid;
+  border-left-width: 10px;
+}
+
+#thread-set > div:first-of-type {
+  border-left-width: 0;
+}

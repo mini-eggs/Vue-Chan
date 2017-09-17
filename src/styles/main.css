@@ -1,5 +1,14 @@
 #x-app {
+  position: relative;
   min-height: 100vh;
+}
+
+body,
+header > * {
+  max-width: 700px;
+  min-width: 0 !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .relative {
@@ -9,3 +18,17 @@
 .z-index-1 {
   z-index: 1;
 }
+
+img {
+  vertical-align: middle;
+}
+
+.md-card {
+  border-radius: 0;
+}
+
+.no-link {
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+

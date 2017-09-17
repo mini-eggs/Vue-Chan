@@ -1,3 +1,5 @@
+// @flow
+
 import "./scroll.css";
 
 const name = "x-scroll";

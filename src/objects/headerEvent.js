@@ -1,16 +1,39 @@
+// @flow
+
+type HeaderEventPropsT = {|
+  container: string,
+  inner: string,
+  offset: number
+|};
+
 class HeaderEvent {
-  constructor({ container, inner, offset }) {
-    this.container = container;
-    this.inner = inner;
-    this.offset = offset;
+  container: string;
+  inner: string;
+  offset: number;
+  lastPosition: number;
+
+  constructor(props: HeaderEventPropsT) {
+    this.container = props.container;
+    this.inner = props.inner;
+    this.offset = props.offset;
+    this.lastPosition = 0;
   }
 
-  get _header() {
-    return document.querySelector(this.container);
+  _findHTMLElementExn(name: string): HTMLElement {
+    const el = document.querySelector(name);
+    if (!el) {
+      throw new Error(`No HTML element available for ${name}`);
+    } else {
+      return el;
+    }
   }
 
-  get _hamburgerEL() {
-    return document.querySelector(this.inner);
+  get _header(): HTMLElement {
+    return this._findHTMLElementExn(this.container);
+  }
+
+  get _hamburgerEL(): HTMLElement {
+    return this._findHTMLElementExn(this.inner);
   }
 
   _showHeader() {
@@ -23,9 +46,16 @@ class HeaderEvent {
   }
 
   scrollHandler() {
-    const { offset, _showHeader, _hideHeader } = this;
-    const nextFunction = window.scrollY < offset ? _showHeader : _hideHeader;
-    nextFunction.bind(this)();
+    const scrollPosition = window.scrollY;
+    const { offset } = this;
+
+    if (scrollPosition < this.lastPosition) {
+      this._showHeader();
+    } else if (scrollPosition > offset) {
+      this._hideHeader();
+    }
+
+    this.lastPosition = scrollPosition;
   }
 }
 
