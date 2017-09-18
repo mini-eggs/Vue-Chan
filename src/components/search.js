@@ -19,11 +19,12 @@ const methods = {
 };
 
 const template = `
-  <div class="search-container">
-    <md-input-container md-inline md-clearable>
-      <label>Search Boards...</label>
-      <md-input @change="updateSearchInput" ></md-input>
-    </md-input-container>
+  <div id="search">
+    <v-text-field
+      label="Search boards..."
+      single-line
+      @input="updateSearchInput" 
+    ></v-text-field>
   </div>
 `;
 

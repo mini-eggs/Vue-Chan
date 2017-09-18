@@ -15,14 +15,15 @@ function getOptions(data) {
 
 const formatThreadList = (board, threads) =>
   threads.map(item => {
-    const thread = item.posts[0].no;
-    return item.posts.map(post => ({
-      ...post,
-      board,
-      thread,
-      image: post.tim ? `/image/${board}/${post.tim}${post.ext}` : null,
-      thumbnail: post.tim ? `/image/${board}/${post.tim}s.jpg` : null
-    }));
+    return item.posts.map(post =>
+      Object.assign({}, post, {
+        board,
+        thread: item.posts[0].no,
+        reply: `http://boards.4chan.org/${board}/thread/${item.posts[0].no}`,
+        image: post.tim ? `/image/${board}/${post.tim}${post.ext}` : null,
+        thumbnail: post.tim ? `/image/${board}/${post.tim}s.jpg` : null
+      })
+    );
   });
 
 const formatPostList = (board, posts) => {

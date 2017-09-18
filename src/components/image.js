@@ -1,5 +1,3 @@
-import "./image.css";
-
 const name = "x-image";
 
 const props = ["item"];
@@ -17,9 +15,9 @@ const template = `
   
     <!--BUTTON-->
     <div v-if="!showImage" class="button-container" :style="{ backgroundImage: 'url(' + item.thumbnail + ')' }">
-      <md-button class="md-primary md-raised" @click.stop="loadImage">
-        <md-icon >visibility_on</md-icon>
-      </md-button>
+      <v-btn fab dark primary @click.stop="loadImage">
+        <v-icon dark>visibility</v-icon>
+      </v-btn>
     </div>
 
     <!--IMAGE-->

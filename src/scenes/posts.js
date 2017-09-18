@@ -1,4 +1,3 @@
-import "./posts.css";
 import ThreadSet from "../components/threadSet";
 import Loader from "../components/loader";
 
@@ -55,7 +54,7 @@ const template = `
 
     <!--LIST-->
     <div v-for="(item, index) in threads[thread]" :key="index">
-      <x-thread-set :view="false" :items="item" ></x-thread-set>
+      <x-thread-set :showChildren="true" :view="false" :items="item" ></x-thread-set>
     </div>
 
   </div>

@@ -1,7 +1,5 @@
 // @flow
 
-import "./scroll.css";
-
 const name = "x-scroll";
 
 const template = `
@@ -11,4 +9,4 @@ const template = `
     </div>
 `;
 
-export { template, name };
+export default { template, name };

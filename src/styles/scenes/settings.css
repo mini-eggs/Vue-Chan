@@ -1,0 +1,17 @@
+#settings {
+  padding-top: 15px;
+}
+
+.vc-chrome {
+  width: 100%;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+
+#settings h5 {
+  margin: 0 15px;
+}
+
+.dialog__content .dialog {
+  background-color: white;
+}

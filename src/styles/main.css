@@ -3,10 +3,9 @@
   min-height: calc(100vh + 1px);
 }
 
-body,
-header > * {
-  max-width: 700px;
-  min-width: 0 !important;
+header nav .toolbar__content,
+#x-app #x-scroll {
+  max-width: 700px !important;
   margin-left: auto;
   margin-right: auto;
 }
@@ -23,16 +22,16 @@ img {
   vertical-align: middle;
 }
 
-.md-card {
+.v-card {
   border-radius: 0;
 }
 
 .no-link {
-  padding: 0 !important;
-  background-color: transparent !important;
+  color: initial !important;
+  text-decoration: initial !important;
 }
 
-.md-no-button {
+.v-no-button {
   min-width: 0 !important;
   min-height: 0 !important;
 }
@@ -51,4 +50,24 @@ input {
 
 .hidden {
   opacity: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+blockquote {
+  padding: 0;
+}
+
+blockquote,
+p {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.card {
+  box-shadow: none;
 }

@@ -1,29 +1,23 @@
 // @flow
 
-import "./homeBoard.css";
-
 const name = "x-home-board";
 
 const props = ["board"];
 
 const template = `
-  <md-card>
-    <md-card-header>
-      <div class="md-title">/{{ board.board }}/ - {{ board.title }}</div>
-    </md-card-header>
+  <router-link class="pointer" :to=" '/' + board.board " tag="v-list-tile">
 
-    <md-card-content>
-      <div v-html=" board.meta_description " ></div>
-    </md-card-content>
+    <v-list-tile-content>
+      <v-list-tile-title>
+        /{{ board.board }}/ - {{ board.title }}
+      </v-list-tile-title>
+    </v-list-tile-content>
 
-    <router-link :to=" '/' + board.board " tag="span">
-      <md-card-actions>
-        <span class="pointer">
-          <md-icon>arrow_forward</md-icon>
-        </span>
-      </md-card-actions>
-    </router-link>
-  </md-card>
+    <v-list-tile-action>
+      <v-icon>arrow_forward</v-icon>
+    </v-list-tile-action>
+
+  </router-link>
 `;
 
 export default { name, props, template };

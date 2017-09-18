@@ -1,6 +1,5 @@
 // @flow
 
-import "./home.css";
 import HomeBoard from "../components/homeBoard";
 import Search from "../containers/search";
 import Loader from "../components/loader";
@@ -44,8 +43,13 @@ const template = `
     </div>
 
     <!--ITEMS-->
-    <div class="home-board-container" v-for="(item, index) in boards" :key="index">
-      <x-home-board :board="item"></x-home-board>
+    <div class="home-board-container">
+      <v-list>
+        <x-home-board 
+          v-for="(item, index) in boards" :key="index"
+          :board="item"
+        ></x-home-board>
+      </v-list>
     </div>
 
   </section>

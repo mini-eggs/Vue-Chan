@@ -1,48 +1,60 @@
-// @flow
-
-// $ignore
-import Vue from "vue/dist/vue";
-import VueMaterial from "vue-material";
-// $ignore
-import VueRouter from "vue-router";
-import "vue-material/dist/vue-material.css";
-import { VueRedux } from "vue2-redux";
+import Vue from "vue/dist/vue.esm";
 import registerServiceWorker from "./registerServiceWorker";
-import * as App from "./app";
-import Routes from "./routes";
+import { app, router } from "./app";
 import Store from "./store";
+
+import "vuetify/dist/vuetify.css";
 import "./styles/main.css";
+import "./styles/components/header.css";
+import "./styles/components/search.css";
+import "./styles/components/homeBoard.css";
+import "./styles/components/image.css";
+import "./styles/components/loader.css";
+import "./styles/components/scroll.css";
+import "./styles/components/single.css";
+import "./styles/components/threadSet.css";
+import "./styles/scenes/home.css";
+import "./styles/scenes/posts.css";
+import "./styles/scenes/settings.css";
+import "./styles/scenes/threads.css";
 
-Vue.use(VueMaterial);
-Vue.use(VueRouter);
-Vue.use(VueRedux(Store));
+function rgba({ r, g, b, a }) {
+  const arr = [r, g, b, a];
+  return `rgba(${arr.join(", ")})`;
+}
 
-const router = new VueRouter({ routes: Routes });
+Store.subscribe(() => {
+  const theme = Store.getState().Settings.theme;
 
-router.afterEach(() => window.scrollTo(0, 0));
+  const hbc = rgba(theme.hbc);
+  const htc = rgba(theme.htc);
+  const bbc = rgba(theme.bbc);
+  const btc = rgba(theme.btc);
 
-// mixins
-Vue.use(VueInstance => {
-  const bus = new VueInstance();
-  VueInstance.mixin({
-    computed: {
-      $bus() {
-        return bus;
-      }
-    }
+  console.log(bbc);
+
+  const styles = [
+    `html, .card, .application, .list {  
+      background-color: ${bbc} !important;
+    }`,
+    `* {
+      color: ${btc} !important;
+    }`,
+    `.primary, .input-group__details:after {
+      background-color: ${hbc} !important;
+    }`,
+    `header, header *, button.primary, button.primary * {
+      color: ${htc} !important;
+    }`
+  ];
+
+  const style = document.createElement("style");
+  style.appendChild(document.createTextNode(""));
+  document.head.appendChild(style);
+  styles.forEach(singleStyle => {
+    style.sheet.insertRule(singleStyle);
   });
 });
 
-// apply theme from local storage
-function mounted() {
-  Store.subscribe(data => {
-    const theme = Store.getState().Settings.theme;
-    const themeName = `custom-theme-${new Date().getTime()}`;
-    this.$material.registerTheme(themeName, theme);
-    this.$material.setCurrentTheme(themeName);
-  });
-}
-
-new Vue({ el: "#root", router, mounted, render: h => h(App) });
-
+new Vue({ el: "#root", router, render: h => h(app) });
 registerServiceWorker();

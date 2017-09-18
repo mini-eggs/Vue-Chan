@@ -1,9 +1,10 @@
 // @flow
 
-import { connect } from "vue2-redux";
 import { updateSearchInput } from "../actions/input";
 import { requestBoards, refreshBoards } from "../actions/home";
 import Home from "../scenes/home";
+
+const { connect } = require("vue2-redux");
 
 const filterBoards = (boards, input) =>
   boards.filter(board => {

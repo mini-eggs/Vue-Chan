@@ -1,7 +1,5 @@
 // @flow
 
-import "./header.css";
-
 const name = "x-header";
 
 const methods = {
@@ -15,53 +13,45 @@ const methods = {
         });
       });
     }
+  },
+  handleRefresh() {
+    this.$bus.$emit("refresh");
+    window.scrollTo(0, 0);
   }
 };
 
 const template = `
   <header>
-    <md-whiteframe md-elevation="5">
-      <div class="z-index-1 relative">
-        <md-toolbar>
+    <v-toolbar dark class="primary">
+    
+      <!--BRAND-->
+      <router-link tag="v-toolbar-items" to="/">
+        <v-btn flat>Vue Chan</v-btn>
+      </router-link>
 
-          <!--BRAND-->
-          <router-link 
-            tag="h2" 
-            to="/" 
-            style="flex: 1;"
-            class="md-title">
-            Chan
-          </router-link>
-          
-          <!--ACTIONS-->
-          <router-link tag="span" to="/">
-            <md-button class="md-icon-button">
-              <md-icon>home</md-icon>
-            </md-button>
-          </router-link>
+      <v-spacer></v-spacer>
 
-          <md-button @click="$router.back()" class="md-icon-button">
-            <md-icon>arrow_back</md-icon>
-          </md-button>
+      <!--ACTIONS-->
+      <v-btn icon @click="$router.back()">
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
 
-          <md-button @click="$bus.$emit('refresh')" class="md-icon-button">
-            <md-icon>refresh</md-icon>
-          </md-button>
+      <v-btn icon @click="handleRefresh" >
+        <v-icon>refresh</v-icon>
+      </v-btn>
 
-          <md-button @click="handleSearch" class="md-icon-button">
-            <md-icon>search</md-icon>
-          </md-button>
+      <v-btn icon @click="handleSearch" >
+        <v-icon>search</v-icon>
+      </v-btn>
 
-          <router-link tag="span" to="/settings">
-            <md-button class="md-icon-button">
-              <md-icon>person</md-icon>
-            </md-button>
-          </router-link>
+      <router-link tag="span" to="/settings">
+        <v-btn icon>
+          <v-icon>person</v-icon>
+        </v-btn>
+      </router-link>
 
-        </md-toolbar>
-      </div>
-    </md-whiteframe>
+    </v-toolbar>
   </header>
 `;
 
-export { name, template, methods };
+export default { name, template, methods };

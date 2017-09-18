@@ -10,17 +10,17 @@ const reducer = (state = initial, action) => {
   const payload = action.payload;
   switch (type) {
     case POST_LIST: {
-      const nextThreads = { ...state.threads };
+      const nextThreads = Object.assign({}, state.threads);
       nextThreads[payload.thread] = formatPostList(
         payload.board,
         payload.posts
       );
-      return { ...state, threads: nextThreads };
+      return Object.assign({}, state, { threads: nextThreads });
     }
     case CLEAR_POST_LIST: {
-      const nextThreads = { ...state.threads };
+      const nextThreads = Object.assign({}, state.threads);
       nextThreads[payload.thread] = [];
-      return { ...state, threads: nextThreads };
+      return Object.assign({}, state, { threads: nextThreads });
     }
     default: {
       return state;

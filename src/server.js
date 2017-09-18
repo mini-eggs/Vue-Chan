@@ -1,12 +1,17 @@
-var express = require("express");
-var path = require("path");
-var http = require("http");
-var fetch = require("node-fetch");
-var request = require("request");
-var bodyParser = require("body-parser");
+import Vue from "vue/dist/vue.esm";
+import { app, router } from "./app";
 
-var server = express();
-var port = process.env.PORT || 8080;
+const express = require("express");
+const { createRenderer } = require("vue-server-renderer");
+const path = require("path");
+const http = require("http");
+const fetch = require("node-fetch");
+const request = require("request");
+const bodyParser = require("body-parser");
+
+const server = express();
+const port = process.env.PORT || 8080;
+const { renderToString } = createRenderer();
 
 function determineURL(URL, params) {
   switch (URL) {
@@ -22,6 +27,19 @@ function determineURL(URL, params) {
     }
   }
 }
+
+// server.get("/", (req, res) => {
+//   const vm = new Vue({ router, render: h => h(app) });
+//   renderToString(vm, (err, html) => {
+//     if (err) {
+//       res.write("Error.");
+//       res.end();
+//     } else {
+//       res.write(html);
+//       res.end();
+//     }
+//   });
+// });
 
 function handle(req, res) {
   fetch(determineURL(req.url, req.body))

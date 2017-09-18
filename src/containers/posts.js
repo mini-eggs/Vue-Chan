@@ -1,6 +1,7 @@
-import { connect } from "vue2-redux";
 import { requestPosts, refreshPosts, clearPosts } from "../actions/posts";
 import Posts from "../scenes/posts";
+
+const { connect } = require("vue2-redux");
 
 const mapState = ({ Posts: { threads } }) => ({ threads });
 

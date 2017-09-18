@@ -1,0 +1,12 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+}
+
+.toolbar__content > *:not(.btn):not(.toolbar__title):not(.menu):first-child,
+.toolbar__extension > *:not(.btn):not(.toolbar__title):not(.menu):first-child {
+  margin-left: 0;
+}

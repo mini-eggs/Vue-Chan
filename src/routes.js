@@ -1,10 +1,15 @@
 // @flow
 
+import Home from "./containers/home";
+import Settings from "./containers/settings";
+import Threads from "./containers/threads";
+import Posts from "./containers/posts";
+
 const routes = [
-  { path: "/", component: () => import("./containers/home") },
-  { path: "/settings", component: () => import("./containers/settings") },
-  { path: "/:board", component: () => import("./containers/threads") },
-  { path: "/:board/:thread", component: () => import("./containers/posts") },
+  { path: "/", component: Home },
+  { path: "/settings", component: Settings },
+  { path: "/:board", component: Threads },
+  { path: "/:board/:thread", component: Posts },
   { path: "*", redirect: "/" }
 ];
 

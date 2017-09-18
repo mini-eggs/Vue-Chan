@@ -8,3 +8,9 @@
   height: 64px;
   width: 100%;
 }
+
+@media (max-width: 600px) and (orientation: portrait) {
+  #x-scroll > .spacer {
+    height: 56px;
+  }
+}

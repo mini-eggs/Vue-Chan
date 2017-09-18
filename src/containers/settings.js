@@ -1,6 +1,7 @@
-import { connect } from "vue2-redux";
 import { saveTheme } from "../actions/settings";
 import Settings from "../scenes/settings";
+
+const { connect } = require("vue2-redux");
 
 const mapState = ({ Settings: { theme } }) => ({ theme });
 

@@ -1,4 +1,3 @@
-import "./threads.css";
 import ThreadSet from "../components/threadSet";
 import Loader from "../components/loader";
 
@@ -41,6 +40,7 @@ function destroyed() {
 
 const methods = {
   refresh() {
+    this.page = 1;
     this.refreshThreads(this.location);
   },
   move(position) {
@@ -64,31 +64,25 @@ const template = `
     </div>
 
     <!--PAGINATION-->
-    <md-card v-if="( boards[location] || [] ).length !== 0" >
-      <md-card-content>
-        <div id="pagination">
+    <v-card v-if="( boards[location] || [] ).length !== 0" >
+      <div id="pagination">
 
-          <!--BACK-->
-          <span :class="{ 'hidden': page < 2 }" class="back pointer" @click="move(-1)">
-            <md-icon>
-              arrow_back
-            </md-icon>
-          </span>
+        <v-card-actions>
+          <v-btn :class="{ 'hidden': page < 2 }" icon @click="move(-1)">
+            <v-icon>arrow_back</v-icon>
+          </v-btn>
 
-          <!--CURRENT PAEG-->
-          <span class="md-body-2">{{ page }}</span>
+          <v-spacer>
+            <p class="text-center">{{ page }}</p>
+          </v-spacer>
 
-          <!--NEXT-->
-          <span :class="{ 'hidden': page > 9 }" class="next pointer" @click="move(1)">
-            <md-icon>
-              arrow_forward
-            </md-icon>
-          </span>
+          <v-btn :class="{ 'hidden': page > 9 }" icon @click="move(1)">
+            <v-icon>arrow_forward</v-icon>
+          </v-btn>
+        </v-card-actions>
 
-        </div>
-      </md-card-content>
-    </md-card>
-
+      </div>
+    </v-card>
   </div>
 `;
 

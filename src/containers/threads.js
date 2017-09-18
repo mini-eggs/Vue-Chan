@@ -1,12 +1,11 @@
-// @flow
-
-import { connect } from "vue2-redux";
 import {
   requestThreads,
   clearThreads,
   refreshThreads
 } from "../actions/threads";
 import Threads from "../scenes/threads";
+
+const { connect } = require("vue2-redux");
 
 const mapState = ({ Threads: { boards } }) => ({ boards });
 
